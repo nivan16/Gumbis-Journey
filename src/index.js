@@ -1,16 +1,18 @@
-import MovingObject from './scripts/moving_object.js'
-let mover = new MovingObject({ pos: [300, 700], vel: [0, 0], radius: 10, color: 'blue' });
-
+import GameView from './scripts/game_view';
+import Character from './scripts/main_character'
+import Game from './scripts/game'
+// let mainChar = 
+let game = new Game({ dimX: window.innerWidth / 5.8, dimY: 30 });
 document.addEventListener("DOMContentLoaded",function(){
   let canvas = document.getElementById("canvas")
   const ctx = canvas.getContext('2d')
-  canvas.width = 1000;
-  canvas.height = 1000;
+  canvas.width = window.innerWidth;
+  canvas.height =  window.innerHeight;
 
-  ctx.fillStyle = "green"
-  ctx.fillRect(450, 50, 900, 800);
-  ctx.fill();
-  
+  //ultimately it should just be game view and game, (only maybe npc stuff & levels in addition to that)
+
+  //i think this 'game area is near the perfect size'
+  // ctx.fillRect(450, 50, 900, 800);
   // ctx.beginPath();
   // ctx.fillStyle = "purple"
   // ctx.arc(200, 200, 50, 0, 2* Math.PI)
@@ -18,32 +20,11 @@ document.addEventListener("DOMContentLoaded",function(){
   // ctx.lineWidth = 10;
   // ctx.stroke();
   // ctx.fill();
-  
-  mover.draw(ctx);
-
-
+  // mover.draw(ctx);
+  let gameView = new GameView(ctx, game)
+  gameView.start();
 })
 
-document.addEventListener('keydown', function (e) {
-  let canvas = document.getElementById("canvas")
-  const ctx = canvas.getContext('2d')
-  if(e.code === 'KeyW'){
-    mover.move([0, -1])
-    mover.draw(ctx);
-  }
-  else if (e.code === 'KeyS') {
-    mover.move([0, 1])
-    mover.draw(ctx);
-  }
-  else if (e.code === 'KeyA') {
-    mover.move([-1, 0])
-    mover.draw(ctx);
-  }
-  else if (e.code === 'KeyD') {
-    mover.move([1, 0])
-    mover.draw(ctx);
-  }
 
-})
 
 

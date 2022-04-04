@@ -8,10 +8,13 @@ class MovingObject{
   }
 
   draw(ctx){
-    // ctx.clearRect(1,,900,90);
+    // debugger
+    
+
     ctx.beginPath();
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = this.color
     ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 360)
+    // ctx.closePath();
     ctx.fill();
     ctx.stroke();
     // debugger;

@@ -14,15 +14,15 @@ class MovingObject{
     ctx.beginPath();
     ctx.fillStyle = this.color
     ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 360)
-    // ctx.closePath();
     ctx.fill();
     ctx.stroke();
+    ctx.closePath();
     // debugger;
   }
   //need to figure out proper velocity
-  move(moves){
-    this.pos[0] += moves[0];
-    this.pos[1] += moves[1];
+  move(){
+    this.pos[0] += this.vel[0];
+    this.pos[1] += this.vel[1];
   }
 
 }

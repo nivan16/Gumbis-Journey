@@ -8,8 +8,8 @@ class GameView{
     this.game.bindPlayerControls(this.ctx)
     setInterval(() => {
       // this.game.moveObjects();  //for when i make npcs!
-      
       this.game.draw(this.ctx); //this will draw the npcs!
+      this.game.player.draw(this.ctx);
     }, 30)
   }
   // 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

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded",function(){
   const ctx = canvas.getContext('2d')
   canvas.width = window.innerWidth;
   canvas.height =  window.innerHeight;
+ 
 
   //ultimately it should just be game view and game, (only maybe npc stuff & levels in addition to that)
 

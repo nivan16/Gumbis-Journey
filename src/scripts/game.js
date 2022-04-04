@@ -24,24 +24,25 @@ class Game {
 
   renderLevel(ctx){
     ctx.clearRect(1, 1, 1000, 1000);
-    ctx.fillStyle = "green"
-    ctx.fillRect(window.innerWidth / 5.8, 30, window.innerWidth / 1.6, window.innerHeight / 1.3);
-    ctx.fill();
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = 'transparent';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(window.innerWidth / 5.8, 30, window.innerWidth / 1.6, window.innerHeight / 1.3);
+    ctx.stroke();
   }
   draw(ctx){
     //this will be responsible drawing the hostile npcs! and maybe main character too!
     // ctx.clearRect(window.innerWidth / 5.8, 30, window.innerWidth / 1.6, window.innerHeight / 1.3);
     this.renderLevel(ctx)
 
-    this.player.draw(ctx);
 
     this.npc.draw(ctx);
 
 
     this.enemies.forEach((enemy)=>{
       // i made a mistake here by only doing positive velocities :c
-      let newVec = [Util.randomVel(), Util.randomVel()]
-      enemy.move(newVec)
+      enemy.vel = [Util.randomVel(), Util.randomVel()]
+      enemy.move()
       enemy.draw(ctx);
     });
     
@@ -51,18 +52,30 @@ class Game {
     let that = this;
     document.addEventListener('keydown', function (e) {
       if (e.code === 'KeyW') {
-        that.player.move([0, -1])
+        const up = [0, -1];
+        that.player.vel[0] += up[0]
+        that.player.vel[1] += up[1]
+        // that.player.move();
       }
       else if (e.code === 'KeyS') {
-        that.player.move([0, 1])
+        const down = [0, 1];
+        that.player.vel[0] += down[0]
+        that.player.vel[1] += down[1]
+        // that.player.move();
       }
       else if (e.code === 'KeyA') {
-        that.player.move([-1, 0])
+        const left = [-1, 0];
+        that.player.vel[0] += left[0]
+        that.player.vel[1] += left[1]
+        // that.player.move();
       }
       else if (e.code === 'KeyD') {
-        that.player.move([1, 0])
+        const right = [1, 0];
+        that.player.vel[0] += right[0]
+        that.player.vel[1] += right[1]
+        // that.player.move();
       }
-
+      that.player.move();
     })
   }
 

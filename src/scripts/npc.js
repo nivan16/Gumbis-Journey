@@ -3,8 +3,9 @@ class Npc{
     this.position = [600, 80]
   }
   draw(ctx){
+    // debugger;
     ctx.beginPath()
-    ctx.fillStyle = 'lightpurple'
+    ctx.fillStyle = 'white'
     ctx.arc(this.position[0], this.position[1], 10, 0, 360)
     ctx.fill();
     ctx.closePath();

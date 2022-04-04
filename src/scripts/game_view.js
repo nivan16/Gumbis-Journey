@@ -12,6 +12,6 @@ class GameView{
       this.game.draw(this.ctx); //this will draw the npcs!
     }, 30)
   }
-
+  // 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
 }
 export default GameView;
